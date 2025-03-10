@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaterBilling</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>ระบบออกบิลค่าน้ำ</h1>
+            <h2>บ้านสวยบางเลน</h2>
+        </header>
+
+        <main class="content">
+            <section class="form-section">
+                <h2>เมนูสร้างบิลค่าน้ำปะปา</h2>
+                <form id="billForm">
+                    <label for="houseNumber">กรุณากรอกข้อมูลให้ครบถ้วน</label>
+                    <label for="houseNumber">บ้านเลขที่:</label>
+                    <input type="text" id="houseNumber" required>
+
+                    <label for="prevMeter">เลขมิเตอร์ครั้งก่อน:</label>
+                    <label for="prevMeter">กด "ดึงข้อมูลมิเตอร์ครั้งก่อน"</label>
+                    <input type="number" id="prevMeter" required>
+                    <button type="button" onclick="loadPrevMeter()">ดึงข้อมูลมิเตอร์ครั้งก่อน</button>
+                    
+                    <label for="currentMeter">เลขมิเตอร์ครั้งนี้:</label>
+                    <input type="number" id="currentMeter" required>
+
+                    <label for="otherFee">ค่าบริการอื่นๆ (ถ้ามี):</label>
+                    <input type="number" id="otherFee">
+
+                    <label for="billDate">วันที่ออกบิล:</label>
+                    <input type="date" id="billDate" required>
+
+                    <button type="button" onclick="generateBill()">สร้างบิล</button>
+                    
+                    <button type="button" onclick="printBill()">พิมพ์บิล</button>
+                </form>
+            </section>
+
+            <section class="output-section" id="billOutputSection">
+                <h2>บิลค่าน้ำ</h2>
+                <div id="billOutput"></div>
+            </section>
+
+            <section class="history-section">
+                <h2>ประวัติการบันทึกบิล</h2>
+                <button onclick="showPendingBills()">ค้างชำระ</button>
+                <button onclick="viewHistory()">ดูประวัติทั้งหมด</button>
+                <div id="historyOutput"></div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p>&copy; ระบบบิลค่าน้ำ บ้านสวยบางเลน</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
