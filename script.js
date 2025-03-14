@@ -64,9 +64,14 @@ function generateBill() {
     let unitsUsed = currentMeter - prevMeter;
     let unitPrice = 6;
     let totalAmount = unitsUsed * unitPrice + otherFee;
+    
+    //เพิ่ม css จัดระเบียบ
 
     let billContent = `
-        <h3>บิลค่าน้ำ บ้านสวยบางเลน</h3>
+        <div class="bill-container">
+        <h3 class="bill-header">บิลค่าน้ำ บ้านสวยบางเลน</h3>
+        <br style="line-height: 0.5em;">
+        <div class="bill-details">
         <p>วันที่ออกบิล ${formattedBillDate}</p>
         <p>บ้านเลขที่ ${houseNumber}</p>
         <p>เลขมิเตอร์ครั้งก่อน: ${prevMeter}</p>
@@ -75,11 +80,67 @@ function generateBill() {
         <p>ราคาหน่วยละ 6 บาท</p>
         <p>ค่าบริการอื่นๆ: ${otherFee} บาท</p>
         <p><strong>รวมเป็นเงิน: ${totalAmount} บาท</strong></p>
-
-        <div class="center-content">
+        <br style="line-height: 0.5em;">
+        <div class="bill-center">
         <p><strong>สแกนด้านล่างเพื่อชำระเงิน</strong></p>
-        <img src="https://jaokit.github.io/WaterBillingWebProject/images/qrcode.jpg" alt="QR Code" width="150">
-        <p><strong>แอดไลน์ 093-4935961 โอนแล้วรบกวนส่งสลิปผ่านไลน์ด้วยค่ะ</strong></p>
+        <img src="https://jaokit.github.io/WaterBillingWEBProject/images/qrcode.jpg" alt="QR Code">
+        <p><strong>แอดไลน์ 093-4935961</strong></p>
+        <p><strong>โอนแล้วรบกวนส่งสลิปผ่านไลน์ด้วยค่ะ</strong></p>
+        </div>
+
+        <style>
+            .bill-container {
+                max-width: 300px;
+                margin: 0 auto;
+                padding: 10px;
+                background: white;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+            .bill-header {
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .bill-details {
+                text-align: left;
+                margin-bottom: 10px;
+            }
+
+            .bill-center {
+                text-align: center;
+            }
+
+            .bill-center img {
+                max-width: 70%;
+                height: auto;
+                display: block;
+                margin: 10px auto;
+            }
+
+            @media print {
+                @page {
+                    size: 80mm auto;
+                    margin: 0;
+                }
+
+                .bill-container {
+                    width: 80mm;
+                    max-width: 80mm;
+                    padding: 0;
+                    border: none;
+                }
+
+                body {
+                    width: 80mm;
+                    font-size: 12px;
+                    margin: 0;
+                    padding: 5px;
+            }
+        }
+    </style>
     `;
 
     document.getElementById("billOutput").innerHTML = billContent;
