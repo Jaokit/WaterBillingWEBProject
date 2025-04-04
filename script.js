@@ -73,7 +73,7 @@ function generateBill() {
         <br style="line-height: 0.5em;">
         <div class="bill-details">
         <p>วันที่ออกบิล ${formattedBillDate}</p>
-        <p>บ้านเลขที่ ${houseNumber}</p>
+        <p><strong>บ้านเลขที่ ${houseNumber}</strong></p>
         <p>เลขมิเตอร์ครั้งก่อน: ${prevMeter}</p>
         <p>เลขมิเตอร์ครั้งนี้: ${currentMeter}</p>
         <p>ใช้น้ำรวม: ${unitsUsed} หน่วย</p>
